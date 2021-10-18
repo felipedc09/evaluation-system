@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Layout from "../src/components/Templates/Layout";
+import Layout from "../../src/components/Templates/Layout";
 
 const Home = () => (
   <Layout title="Test">
