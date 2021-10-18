@@ -1,11 +1,10 @@
 import { GetStaticProps } from "next";
 import Link from "next/link";
 import { FC } from "react";
-import { Question } from "../../src/interfaces";
-import { questions } from "../../src/utils/questions";
+import { Test } from "../../src/interfaces";
 
 type Props = {
-  questions: Question[];
+  questions: Test[];
 };
 
 const WithStaticProps: FC<Props> = ({ questions }) => (
@@ -16,10 +15,5 @@ const WithStaticProps: FC<Props> = ({ questions }) => (
     </Link>
   </div>
 );
-
-export const getStaticProps: GetStaticProps = async () => {
-  const items: Question[] = questions;
-  return { props: { questions } };
-};
 
 export default WithStaticProps;

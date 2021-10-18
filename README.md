@@ -5,7 +5,7 @@ This is a module for a evaluation system that lets know the amount of correct an
 ## Flowchart
 
 <p align="center">
-  <img src="./src/resources/Flowchart-evaluation-system.png" alt="Sublime's custom image"/>
+  <img src="./src/resources/Flowchart-evaluation-system.png" alt="Evaluation system"/>
 </p>
 
 ## How to use it?
