@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Option, Question } from "../../../interfaces";
-import { Column, Container, Icon } from "./status.styles";
+import { Column, Container, Icon, Result, Score } from "./status.styles";
 
 type Props = {
   questions: Question[];
@@ -11,7 +11,7 @@ const Status: FC<Props> = ({ questions }) => {
     return questions.reduce(
       (countAnswers, nextQuestion) => {
         const { correct, wrong } = getCountAnswersByOptions(
-          nextQuestion.options
+          Object.values(nextQuestion.options)
         );
         return {
           correct: countAnswers.correct + correct,
@@ -40,15 +40,21 @@ const Status: FC<Props> = ({ questions }) => {
   return (
     <Container>
       <Column>
-        <Icon /> {`-> ${correctAnswers}`}
-        <Icon /> {`-> ${wrongAnswers}`}
+        <Result>
+          <Icon />
+          {`→ ${correctAnswers}`}
+        </Result>
+        <Result>
+          <Icon />
+          {`→ ${wrongAnswers}`}
+        </Result>
       </Column>
-      <Column>
-        <span>Score</span>
-        <span>
-          {score} <Icon />
-        </span>
-      </Column>
+      <Score>
+        <h4>Score</h4>
+        <div>
+          {score.toFixed(2)}% <Icon />
+        </div>
+      </Score>
     </Container>
   );
 };

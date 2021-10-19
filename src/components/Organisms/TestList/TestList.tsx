@@ -1,6 +1,4 @@
 import React, { FC } from "react";
-import { v4 as uuidv4 } from "uuid";
-
 import { Test } from "../../../interfaces";
 import TestItem from "../../Molecules/TestItem/TestItem";
 import { Container } from "./testList.styles";
@@ -12,8 +10,8 @@ type Props = {
 const TestList: FC<Props> = ({ tests }) => {
   return (
     <Container>
-      {tests.map((test) => (
-        <TestItem key={uuidv4()} test={test} />
+      {Object.keys(tests).map((testId) => (
+        <TestItem key={testId} id={testId} test={tests[testId]} />
       ))}
     </Container>
   );

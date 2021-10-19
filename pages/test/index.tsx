@@ -1,29 +1,32 @@
 import useSWR from "swr";
-import { GetStaticProps } from "next";
-import Link from "next/link";
-import { FC } from "react";
+import { FC, useContext, useEffect } from "react";
 import Layout from "../../src/components/Templates/Layout";
 import { Test } from "../../src/interfaces";
+import TestList from "../../src/components/Organisms/TestList/TestList";
+import appContext from "../../src/AppContext";
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-type Props = {
-  tests: Test;
-};
-
-const Home: FC<Props> = ({ tests }) => {
+const Tests: FC = () => {
+  const { setTests } = useContext(appContext);
   const { data, error } = useSWR("/api/test", fetcher);
+
+  useEffect(() => {
+    if (data) {
+      setTests(data);
+    }
+  }, [data]);
 
   if (error) return <div>Failed to load</div>;
   if (!data) return <div>Loading...</div>;
 
   return (
     <Layout title="Test">
-      <h1>Test 👋</h1>
+      <h1>Tests 👋</h1>
       Welcome to a system evaluation module, please take a test.
-      {JSON.stringify(data)}
+      <TestList tests={data} />
     </Layout>
   );
 };
 
-export default Home;
+export default Tests;
