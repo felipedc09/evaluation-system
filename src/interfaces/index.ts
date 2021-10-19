@@ -6,6 +6,7 @@ export type Test = {
 
 export type Question = {
   statement: string
+  isEvaluated: boolean
   options: {[optionId:string]: Option}
 }
 

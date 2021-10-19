@@ -43,9 +43,17 @@ export function ContextProvider({ children }) {
   ) => {
     const questions = state.tests[testId].questions;
     const options = state.tests[testId].questions[questionId].options;
-    const lastOptionId = Object.keys(options).find(
-      (optionId) => options[optionId].isSelected === true
-    );
+
+    const newOptions = Object.keys(
+      state.tests[testId].questions[questionId].options
+    ).reduce((accumulatorOptions, nextOptionId) => {
+      accumulatorOptions = {
+        ...accumulatorOptions,
+        [nextOptionId]: { ...options[nextOptionId], isSelected: false },
+      };
+      return accumulatorOptions;
+    }, {});
+
     setstate({
       ...state,
       tests: {
@@ -57,11 +65,7 @@ export function ContextProvider({ children }) {
             [questionId]: {
               ...questions[questionId],
               options: {
-                ...options,
-                [lastOptionId]: {
-                  ...options[optionId],
-                  isSelected: false,
-                },
+                ...newOptions,
                 [optionId]: {
                   ...options[optionId],
                   isSelected,

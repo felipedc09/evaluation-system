@@ -4,6 +4,7 @@ import { Test } from '../interfaces'
 const reactQuestions = {
   'Q1':{
     statement: 'a',
+    isEvaluated: true,
     options: {
       'P1':{
         answer: 'a',
@@ -29,6 +30,7 @@ const reactQuestions = {
   },
   'Q2':{
       statement: 'b',
+      isEvaluated: true,
       options: {
         'P1':{
           answer: 'a',
@@ -54,6 +56,7 @@ const reactQuestions = {
     },
     'Q3': {
         statement: 'c',
+        isEvaluated: true,
         options: {
           'P1':{
             answer: 'a',
@@ -79,6 +82,7 @@ const reactQuestions = {
       },
       'Q4':{
           statement: 'd',
+          isEvaluated: true,
           options: {
             'P1':{
               answer: 'a',
@@ -104,6 +108,7 @@ const reactQuestions = {
         },
         'Q5':{
             statement: 'e',
+            isEvaluated: true,
             options: {
               'P1':{
                 answer: 'e',
@@ -132,11 +137,12 @@ const reactQuestions = {
 const HTMLQuestions = {
   'Q1':{
     statement: 'a',
+    isEvaluated: false,
     options: [
       {
         answer: 'd',
         isCorrect: false,
-        isSelected: true
+        isSelected: false
       },
       {
         answer: 'b',
@@ -157,6 +163,7 @@ const HTMLQuestions = {
   },
   'Q2':{
       statement: 'c',
+      isEvaluated: false,
       options: [
         {
           answer: 'a',
@@ -166,7 +173,7 @@ const HTMLQuestions = {
         {
           answer: 'b',
           isCorrect: false,
-          isSelected: true
+          isSelected: false
         },
         {
           answer: 'c',
@@ -182,6 +189,7 @@ const HTMLQuestions = {
     },
     'Q3':{
         statement: 'b',
+        isEvaluated: false,
         options: [
           {
             answer: 'a',
@@ -196,7 +204,7 @@ const HTMLQuestions = {
           {
             answer: 'c',
             isCorrect: false,
-            isSelected: true
+            isSelected: false
           },
           {
             answer: 'd',
@@ -207,6 +215,7 @@ const HTMLQuestions = {
       },
       'Q4':{
           statement: 'a',
+          isEvaluated: false,
           options: [
             {
               answer: 'a',
@@ -226,17 +235,18 @@ const HTMLQuestions = {
             {
               answer: 'd',
               isCorrect: false,
-              isSelected: true
+              isSelected: false
             },
           ]
         },
         'Q5':{
             statement: 'e',
+            isEvaluated: false,
             options: [
               {
                 answer: 'e',
                 isCorrect: true,
-                isSelected: true
+                isSelected: false
               },
               {
                 answer: 'b',

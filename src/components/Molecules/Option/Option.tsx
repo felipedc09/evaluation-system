@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect } from "react";
+import React, { FC, useContext } from "react";
 import { useRouter } from "next/router";
 import appContext from "../../../AppContext";
 import { Option as OptionType } from "../../../interfaces";
@@ -17,25 +17,16 @@ const Option: FC<Props> = ({ id: optionId, option, questionRef }) => {
   const testId = router.query.id as string;
 
   function selectIconByStatus(): string {
-    if (!option.isSelected) {
+    if (!tests[testId].questions[questionRef].isEvaluated) {
       return "";
     }
-    if (option.isCorrect && option.isSelected) {
-      return "";
+    if (option.isCorrect) {
+      return "/static/icons/correct.svg";
     }
-    if (!option.isCorrect && option.isSelected) {
-      return "";
-    }
-    return "";
+    return "/static/icons/wrong.svg";
   }
 
-  // useEffect(() => {
-  //   if(optionId){
-  //   }
-  // }, [tests]);
-
   function handleOptionChange(event) {
-    console.log(event.target.value === optionId);
     selectOption(
       testId,
       questionRef,
@@ -44,10 +35,6 @@ const Option: FC<Props> = ({ id: optionId, option, questionRef }) => {
     );
   }
 
-  console.log(
-    optionId,
-    tests[testId].questions[questionRef].options[optionId].isSelected
-  );
   return (
     <Container>
       <input

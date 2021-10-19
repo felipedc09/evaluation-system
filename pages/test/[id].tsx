@@ -40,6 +40,12 @@ const Home: FC<Props> = () => {
     }
   }, [id]);
 
+  useEffect(() => {
+    if (tests) {
+      setSelectedTest(tests[id]);
+    }
+  }, [tests]);
+
   if (error) return <div>Failed to load</div>;
   if (!selectedTest) return <div>Loading...</div>;
 

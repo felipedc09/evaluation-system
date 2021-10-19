@@ -33,6 +33,17 @@ const Status: FC<Props> = ({ questions }) => {
     return options.find((option) => option.isCorrect && option.isSelected);
   }
 
+  function showStatusIcon(score) {
+    console.log(score);
+    if (score < 50) {
+      return <span>🙁</span>;
+    }
+    if (score > 50 && score < 80) {
+      return <span>😐</span>;
+    }
+    return <span>🙂</span>;
+  }
+
   const { correct: correctAnswers, wrong: wrongAnswers } =
     getCountAnswersByQuestions(questions);
   const score = (correctAnswers / questions.length) * 100;
@@ -40,18 +51,18 @@ const Status: FC<Props> = ({ questions }) => {
     <Container>
       <Column>
         <Result>
-          <Icon />
+          <Icon src="/static/icons/correct.svg" />
           {`→ ${correctAnswers}`}
         </Result>
         <Result>
-          <Icon />
+          <Icon src="/static/icons/wrong.svg" />
           {`→ ${wrongAnswers}`}
         </Result>
       </Column>
       <Score>
         <h4>Score</h4>
         <div>
-          {score.toFixed(2)}% <Icon />
+          {score.toFixed(2)}% {showStatusIcon(score)}
         </div>
       </Score>
     </Container>
