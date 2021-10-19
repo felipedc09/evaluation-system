@@ -40,7 +40,7 @@ export function ContextProvider({ children }) {
 
   const value = {
     tests: state.tests,
-    selectedTest: state.selectedTestId,
+    selectedTestId: state.selectedTestId,
     setTests,
     setSelectedTest,
   };
