@@ -8,7 +8,6 @@ type Props = {
 };
 
 const OptionsList: FC<Props> = ({ options, questionRef }) => {
-  const [isSelected, setIsSelected] = useState(null);
 
   return (
     <Container>

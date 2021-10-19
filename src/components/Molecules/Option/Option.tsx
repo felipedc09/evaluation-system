@@ -1,4 +1,5 @@
-import React, { FC, useContext, useState } from "react";
+import React, { FC, useContext } from "react";
+import { useRouter } from "next/router";
 import appContext from "../../../AppContext";
 import { Option as OptionType } from "../../../interfaces";
 import { Container, Icon } from "./option.styles";
@@ -9,8 +10,11 @@ type Props = {
   questionRef: string;
 };
 
-const Option: FC<Props> = ({ id, option, questionRef }) => {
-  const { setSelectedTest } = useContext(appContext);
+const Option: FC<Props> = ({ id: optionId, option, questionRef }) => {
+  const router = useRouter();
+  const { selectOption, tests } = useContext(appContext);
+
+  const testId = router.query.id as string;
 
   function selectIconByStatus(): string {
     if (!option.isSelected) {
@@ -25,7 +29,9 @@ const Option: FC<Props> = ({ id, option, questionRef }) => {
     return "";
   }
 
-  function handleOptionChange() {}
+  function handleOptionChange(event) {
+    selectOption(testId, questionRef, optionId, event.target.value);
+  }
 
   return (
     <Container>
@@ -33,7 +39,9 @@ const Option: FC<Props> = ({ id, option, questionRef }) => {
         type="radio"
         name={`answer-${questionRef}`}
         value={option.answer}
-        checked={option.isSelected}
+        checked={
+          tests[testId].questions[questionRef].options[optionId].isSelected
+        }
         onChange={handleOptionChange}
       />
       {option.answer}

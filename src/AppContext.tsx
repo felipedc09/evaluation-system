@@ -6,6 +6,12 @@ type AppContext = {
   selectedTestId: string;
   setTests: (tests: { [testId: string]: Test }) => void;
   setSelectedTest: (testId: string) => void;
+  selectOption: (
+    testId: string,
+    questionId: string,
+    optionId: string,
+    isSelected: boolean
+  ) => void;
 };
 
 const stateDefaultValues: AppContext = {
@@ -13,6 +19,7 @@ const stateDefaultValues: AppContext = {
   selectedTestId: null,
   setTests: () => {},
   setSelectedTest: () => {},
+  selectOption: () => {},
 };
 
 const appContext = createContext<AppContext>(stateDefaultValues);
@@ -31,11 +38,34 @@ export function ContextProvider({ children }) {
   const selectOption = (
     testId: string,
     questionId: string,
-    optionId: string
+    optionId: string,
+    isSelected: boolean
   ) => {
-    // setstate({ ...state, tests: { ...state.tests, [testId] : { ...state.tests[testId], [questionId] : {...state.tests[testId].questions[questionId], state.tests[testId].questions[questionId].options[optionId]} } } });
-    const change = state.tests[testId].questions[questionId].options[optionId];
-    setstate({ ...state });
+    const option = state.tests[testId].questions[questionId].options[optionId];
+    setstate({
+      ...state,
+      tests: {
+        ...state.tests,
+        [testId]: {
+          ...state.tests[testId],
+          questions: {
+            ...state.tests[testId].questions,
+            [questionId]: {
+              ...state.tests[testId].questions[questionId],
+              options: {
+                ...state.tests[testId].questions[questionId].options,
+                [optionId]: {
+                  ...state.tests[testId].questions[questionId].options[
+                    optionId
+                  ],
+                  isSelected,
+                },
+              },
+            },
+          },
+        },
+      },
+    });
   };
 
   const value = {
@@ -43,6 +73,7 @@ export function ContextProvider({ children }) {
     selectedTestId: state.selectedTestId,
     setTests,
     setSelectedTest,
+    selectOption,
   };
 
   return (

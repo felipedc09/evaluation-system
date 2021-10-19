@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { Test } from "../../../interfaces";
+import Status from "../../Atoms/Status/Status";
 import QuestionList from "../../Organisms/QuestionList/QuestionList";
 
 type Props = {
@@ -11,6 +12,7 @@ const TestTemplate: FC<Props> = ({ test }) => {
     <div>
       <h1>{test.title}</h1>
       {test.description}
+      <Status questions={Object.values(test.questions)} />
       <QuestionList questions={test.questions} />
     </div>
   );
