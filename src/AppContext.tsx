@@ -41,7 +41,11 @@ export function ContextProvider({ children }) {
     optionId: string,
     isSelected: boolean
   ) => {
-    const option = state.tests[testId].questions[questionId].options[optionId];
+    const questions = state.tests[testId].questions;
+    const options = state.tests[testId].questions[questionId].options;
+    const lastOptionId = Object.keys(options).find(
+      (optionId) => options[optionId].isSelected === true
+    );
     setstate({
       ...state,
       tests: {
@@ -49,15 +53,17 @@ export function ContextProvider({ children }) {
         [testId]: {
           ...state.tests[testId],
           questions: {
-            ...state.tests[testId].questions,
+            ...questions,
             [questionId]: {
-              ...state.tests[testId].questions[questionId],
+              ...questions[questionId],
               options: {
-                ...state.tests[testId].questions[questionId].options,
+                ...options,
+                [lastOptionId]: {
+                  ...options[optionId],
+                  isSelected: false,
+                },
                 [optionId]: {
-                  ...state.tests[testId].questions[questionId].options[
-                    optionId
-                  ],
+                  ...options[optionId],
                   isSelected,
                 },
               },

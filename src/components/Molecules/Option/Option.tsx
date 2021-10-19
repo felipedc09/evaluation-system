@@ -1,4 +1,4 @@
-import React, { FC, useContext } from "react";
+import React, { FC, useContext, useEffect } from "react";
 import { useRouter } from "next/router";
 import appContext from "../../../AppContext";
 import { Option as OptionType } from "../../../interfaces";
@@ -29,16 +29,31 @@ const Option: FC<Props> = ({ id: optionId, option, questionRef }) => {
     return "";
   }
 
+  // useEffect(() => {
+  //   if(optionId){
+  //   }
+  // }, [tests]);
+
   function handleOptionChange(event) {
-    selectOption(testId, questionRef, optionId, event.target.value);
+    console.log(event.target.value === optionId);
+    selectOption(
+      testId,
+      questionRef,
+      optionId,
+      event.target.value === optionId
+    );
   }
 
+  console.log(
+    optionId,
+    tests[testId].questions[questionRef].options[optionId].isSelected
+  );
   return (
     <Container>
       <input
         type="radio"
         name={`answer-${questionRef}`}
-        value={option.answer}
+        value={optionId}
         checked={
           tests[testId].questions[questionRef].options[optionId].isSelected
         }
