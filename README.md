@@ -67,6 +67,13 @@ anf finaly open [`http://localhost:3000`](http://localhost:3000) to use the appl
   <img src="./src/resources/Show results.png" alt="Evaluation system"/>
 </p>
 
+## Technologies
+
+- React.js
+- Next.js
+- TypeScript
+- Style-Components
+
 ## Deploy
 
 You can show the deployed application in this site [!Evaluation system](https://evaluation-system-b9jzoo4aq-felipedc09.vercel.app/)
