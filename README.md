@@ -64,7 +64,7 @@ anf finaly open [`http://localhost:3000`](http://localhost:3000) to use the appl
 
 - Shoe the results and your score over the test
 <p align="center">
-  <img src="./src/resources/Show results.png" alt="Evaluation system"/>
+  <img src="./src/resources/ShowResults.png" alt="Evaluation system"/>
 </p>
 
 ## Technologies
