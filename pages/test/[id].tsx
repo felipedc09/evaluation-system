@@ -51,7 +51,7 @@ const Home: FC<Props> = () => {
 
   return (
     <Layout title="Test">
-      <TestTemplate test={selectedTest} />
+      <TestTemplate id={id} test={selectedTest} />
     </Layout>
   );
 };

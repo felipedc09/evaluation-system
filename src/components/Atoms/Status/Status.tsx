@@ -4,16 +4,15 @@ import { Column, Container, Icon, Result, Score } from "./status.styles";
 
 type Props = {
   questions: Question[];
+  isEvaluated: boolean;
 };
 
-const Status: FC<Props> = ({ questions }) => {
+const Status: FC<Props> = ({ questions, isEvaluated }) => {
   function getCountAnswersByQuestions(questions: Question[]) {
     return questions.reduce(
       (countAnswers, nextQuestion) => {
-        const evaluation = getCountAnswersByOptions(
-          Object.values(nextQuestion.options)
-        );
-        if (evaluation) {
+        const isCorrect = isCorrectAnswer(Object.values(nextQuestion.options));
+        if (isCorrect) {
           return {
             ...countAnswers,
             correct: countAnswers.correct + 1,
@@ -29,12 +28,11 @@ const Status: FC<Props> = ({ questions }) => {
     );
   }
 
-  function getCountAnswersByOptions(options: Option[]) {
+  function isCorrectAnswer(options: Option[]) {
     return options.find((option) => option.isCorrect && option.isSelected);
   }
 
   function showStatusIcon(score) {
-    console.log(score);
     if (score < 50) {
       return <span>🙁</span>;
     }
@@ -44,27 +42,46 @@ const Status: FC<Props> = ({ questions }) => {
     return <span>🙂</span>;
   }
 
+  function renderScore() {
+    return (
+      <Score>
+        <h4>Score</h4>
+        {isEvaluated ? (
+          <div>
+            {score.toFixed(2)}% {showStatusIcon(score)}
+          </div>
+        ) : (
+          " ---"
+        )}
+      </Score>
+    );
+  }
+
+  function renderResults() {
+    if (isEvaluated) {
+      return (
+        <>
+          <Result>
+            <Icon src="/static/icons/correct.svg" />
+            {`→ ${correctAnswers}`}
+          </Result>
+          <Result>
+            <Icon src="/static/icons/wrong.svg" />
+            {`→ ${wrongAnswers}`}
+          </Result>
+        </>
+      );
+    }
+    return "---";
+  }
+
   const { correct: correctAnswers, wrong: wrongAnswers } =
     getCountAnswersByQuestions(questions);
   const score = (correctAnswers / questions.length) * 100;
   return (
     <Container>
-      <Column>
-        <Result>
-          <Icon src="/static/icons/correct.svg" />
-          {`→ ${correctAnswers}`}
-        </Result>
-        <Result>
-          <Icon src="/static/icons/wrong.svg" />
-          {`→ ${wrongAnswers}`}
-        </Result>
-      </Column>
-      <Score>
-        <h4>Score</h4>
-        <div>
-          {score.toFixed(2)}% {showStatusIcon(score)}
-        </div>
-      </Score>
+      <Column>{renderResults()}</Column>
+      {renderScore()}
     </Container>
   );
 };

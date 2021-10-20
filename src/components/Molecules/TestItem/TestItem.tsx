@@ -24,7 +24,10 @@ const TestItem: FC<Props> = ({ id, test }) => {
             <h2>{test.title}</h2>
           </Head>
           {test.description}
-          <Status questions={Object.values(test.questions)} />
+          <Status
+            isEvaluated={test.isEvaluated}
+            questions={Object.values(test.questions)}
+          />
         </Container>
       </a>
     </Link>

@@ -12,6 +12,7 @@ type AppContext = {
     optionId: string,
     isSelected: boolean
   ) => void;
+  evaluateTest: (testId: string) => void;
 };
 
 const stateDefaultValues: AppContext = {
@@ -20,6 +21,7 @@ const stateDefaultValues: AppContext = {
   setTests: () => {},
   setSelectedTest: () => {},
   selectOption: () => {},
+  evaluateTest: () => {},
 };
 
 const appContext = createContext<AppContext>(stateDefaultValues);
@@ -78,12 +80,23 @@ export function ContextProvider({ children }) {
     });
   };
 
+  const evaluateTest = (testId) => {
+    setstate({
+      ...state,
+      tests: {
+        ...state.tests,
+        [testId]: { ...state.tests[testId], isEvaluated: true },
+      },
+    });
+  };
+
   const value = {
     tests: state.tests,
     selectedTestId: state.selectedTestId,
     setTests,
     setSelectedTest,
     selectOption,
+    evaluateTest,
   };
 
   return (

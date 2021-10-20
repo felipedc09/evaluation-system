@@ -5,15 +5,16 @@ import { Container } from "./optionList.styles";
 type Props = {
   options: { [optionId: string]: OptionType };
   questionRef: string;
+  isEvaluated: boolean;
 };
 
-const OptionsList: FC<Props> = ({ options, questionRef }) => {
-
+const OptionsList: FC<Props> = ({ options, questionRef, isEvaluated }) => {
   return (
     <Container>
       {Object.keys(options).map((optionId) => (
         <Option
           key={optionId}
+          isEvaluated={isEvaluated}
           id={optionId}
           option={options[optionId]}
           questionRef={questionRef}

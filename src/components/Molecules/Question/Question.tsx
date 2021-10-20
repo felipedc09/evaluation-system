@@ -13,11 +13,15 @@ import {
 type Props = {
   id: string;
   question: QuestionType;
+  isEvaluated: boolean;
 };
 
-const Question: FC<Props> = ({ id, question }) => {
+const Question: FC<Props> = ({ id, question, isEvaluated }) => {
   const [isOpenOptions, setIsOpenOptions] = useState(false);
   function getStatusIcon() {
+    if (!isEvaluated) {
+      return "";
+    }
     const status = Object.values(question.options).find(
       (option) => option.isSelected && option.isCorrect
     );
@@ -42,7 +46,7 @@ const Question: FC<Props> = ({ id, question }) => {
     if (isOpenOptions) {
       return (
         <Options>
-          <OptionsList options={question.options} questionRef={id} />
+          <OptionsList isEvaluated={isEvaluated} options={question.options} questionRef={id} />
         </Options>
       );
     }

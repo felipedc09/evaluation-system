@@ -8,16 +8,22 @@ type Props = {
   id: string;
   option: OptionType;
   questionRef: string;
+  isEvaluated: boolean;
 };
 
-const Option: FC<Props> = ({ id: optionId, option, questionRef }) => {
+const Option: FC<Props> = ({
+  id: optionId,
+  option,
+  questionRef,
+  isEvaluated,
+}) => {
   const router = useRouter();
   const { selectOption, tests } = useContext(appContext);
 
   const testId = router.query.id as string;
 
   function selectIconByStatus(): string {
-    if (!tests[testId].questions[questionRef].isEvaluated) {
+    if (!isEvaluated) {
       return "";
     }
     if (option.isCorrect) {
@@ -27,16 +33,19 @@ const Option: FC<Props> = ({ id: optionId, option, questionRef }) => {
   }
 
   function handleOptionChange(event) {
-    selectOption(
-      testId,
-      questionRef,
-      optionId,
-      event.target.value === optionId
-    );
+    if (!isEvaluated) {
+      selectOption(
+        testId,
+        questionRef,
+        optionId,
+        event.target.value === optionId
+      );
+    }
   }
 
   return (
     <Container>
+      <Icon src={selectIconByStatus()} />
       <input
         type="radio"
         name={`answer-${questionRef}`}
@@ -47,7 +56,6 @@ const Option: FC<Props> = ({ id: optionId, option, questionRef }) => {
         onChange={handleOptionChange}
       />
       {option.answer}
-      <Icon src={selectIconByStatus()} />
     </Container>
   );
 };

@@ -2,11 +2,11 @@ export type Test = {
   title: string
   description: string
   questions: {[questionId: string]: Question}
+  isEvaluated: boolean
 }
 
 export type Question = {
   statement: string
-  isEvaluated: boolean
   options: {[optionId:string]: Option}
 }
 
