@@ -2,7 +2,7 @@ import React, { FC, useContext } from "react";
 import Link from "next/link";
 import { Test } from "../../../interfaces";
 import Status from "../../Atoms/Status/Status";
-import { Container, Head } from "./testItem.styles";
+import { Container, Head, Image } from "./testItem.styles";
 import appContext from "../../../AppContext";
 
 type Props = {
@@ -22,6 +22,7 @@ const TestItem: FC<Props> = ({ id, test }) => {
         <Container onClick={openTest}>
           <Head>
             <h2>{test.title}</h2>
+            <Image src={test.imagePath}/>
           </Head>
           {test.description}
           <Status

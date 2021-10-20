@@ -18,7 +18,7 @@ const Layout = ({ children, title = "Test" }: Props) => (
     {children}
     <footer>
       <hr />
-      <span>Platzi master | C8</span>
+      <span>Platzi master | C8 | Felipe Duitama</span>
     </footer>
   </div>
 );

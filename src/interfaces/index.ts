@@ -2,6 +2,7 @@ export type Test = {
   title: string
   description: string
   questions: {[questionId: string]: Question}
+  imagePath: string
   isEvaluated: boolean
 }
 

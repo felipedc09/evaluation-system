@@ -22,8 +22,7 @@ const Tests: FC = () => {
 
   return (
     <Layout title="Test">
-      <h1>Tests 👋</h1>
-      Welcome to a system evaluation module, please take a test.
+      <h1>Tests</h1>
       <TestList tests={data} />
     </Layout>
   );

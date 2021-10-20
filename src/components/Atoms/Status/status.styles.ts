@@ -5,6 +5,10 @@ export const Container = styled.div`
     grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-items: center;
+    margin: 1em 0;
+    border: solid 1px #000;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px  #eee;
     `;
 
 export const Column = styled.div`

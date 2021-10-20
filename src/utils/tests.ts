@@ -3,125 +3,125 @@ import { Test } from '../interfaces'
 
 const reactQuestions = {
   'Q1':{
-    statement: 'a',
+    statement: 'What is Reconciliation?',
     options: {
       'P1':{
-        answer: 'a',
-        isCorrect: true,
-        isSelected: true
+        answer: 'The process through which React deletes the DOM.',
+        isCorrect: false,
+        isSelected: false
       },
       'P2':{
-        answer: 'b',
+        answer: 'The process through which React updates and deletes the component.',
         isCorrect: false,
         isSelected: false
       },
       'P3':{
-        answer: 'c',
+        answer: 'It is a process to set the state.',
         isCorrect: false,
         isSelected: false
       },
       'P4':{
-        answer: 'd',
-        isCorrect: false,
+        answer: 'The process through which React updates the DOM.',
+        isCorrect: true,
         isSelected: false
       }
     }
   },
   'Q2':{
-      statement: 'b',
+      statement: 'Which are the correct phases of component lifecycle?',
       options: {
         'P1':{
-          answer: 'a',
+          answer: 'Mounting: getDerivedStateFromProps(); Updating: componentWillUnmount(); Unmounting: shouldComponentUpdate()',
           isCorrect: false,
           isSelected: false
         },
         'P2':{
-          answer: 'b',
-          isCorrect: true,
-          isSelected: true
-        },
-        'P3':{
-          answer: 'c',
+          answer: 'Mounting: componentWillUnmount(); Updating: render(); Unmounting: setState()',
           isCorrect: false,
           isSelected: false
         },
+        'P3':{
+          answer: 'Mounting: componentDidMount(); Updating: componentDidUpdate(); Unmounting: componentWillUnmount()',
+          isCorrect: true,
+          isSelected: false
+        },
         'P4':{
-          answer: 'd',
+          answer: 'Mounting: constructor(); Updating: getDerivedStateFromProps(); Unmounting: render()',
           isCorrect: false,
           isSelected: false
         },
       }
     },
     'Q3': {
-        statement: 'c',
+        statement: 'Controlled Component vs Uncontrolled Component',
         options: {
           'P1':{
-            answer: 'a',
-            isCorrect: false,
+            answer: 'Controlled Components: every state mutation will have an associated handler function; Uncontrolled Components: store their own states internally',
+            isCorrect: true,
             isSelected: false
           },
           'P2':{
-            answer: 'b',
+            answer: 'Controlled Components: store their own states internally; Uncontrolled Components: every state mutation will have an associated handler function',
             isCorrect: false,
             isSelected: false
           },
           'P3':{
-            answer: 'c',
-            isCorrect: true,
-            isSelected: true
+            answer: 'Controlled Components: A component who is so good at controlling itself; Uncontrolled Components: A component who has no idea how to control itself',
+            isCorrect: false,
+            isSelected: false
           },
           'P4':{
-            answer: 'd',
+            answer: 'Controlled Components: every state mutation does not have an associated handler function; Uncontrolled Components: does not store their own states internally',
             isCorrect: false,
             isSelected: false
           },
         }
       },
       'Q4':{
-          statement: 'd',
+          statement: 'State vs Props',
           options: {
             'P1':{
-              answer: 'a',
+              answer: 'Props is something that the parent doesn’t need and decide to throw around among other parents; State is the parent’s favorite child and something the component wants to nurture.',
               isCorrect: false,
               isSelected: false
             },
             'P2':{
-              answer: 'b',
-              isCorrect: false,
+              answer: 'Props get passed to the component using naming conventions, like a function parameter; State is managed within the component and holds some information that may change over the lifetime of the component.',
+              isCorrect: true,
               isSelected: false
             },
             'P3':{
-              answer: 'c',
+              answer: 'Props is a copy of real DOM; State is the definition of the real DOM.',
               isCorrect: false,
               isSelected: false
             },
             'P4':{
-              answer: 'd',
-              isCorrect: true,
-              isSelected: true
+              answer: 'Prop is managed within the component and holds some information that may change over the lifetime of the component; State gets passed to the component, like a function parameter',
+              isCorrect: false,
+              isSelected: false
             },
           }
         },
         'Q5':{
-            statement: 'e',
+            statement: 'What is the “key” prop?',
             options: {
               'P1':{
-                answer: 'e',
-                isCorrect: true,
+                answer: '“Key” prop is just there to look pretty and there is no benefit whatsoever.',
+                isCorrect: false,
                 isSelected: false
               },
               'P2':{
-                answer: 'b',
+                answer: '“Key” prop is a way for React to identify a newly added item in a list and compare during the “diffing” algorithm.',
                 isCorrect: false,
-                isSelected: true
+                isSelected: false
               },
               'P3':{
-                answer: 'c',
+                answer: 'It is one of the attributes in HTML.',
                 isCorrect: false,
                 isSelected: false
               },
               'P4':{
-                answer: 'd',
+                answer: 'All I know is that it is NOT commonly used in array.',
                 isCorrect: false,
                 isSelected: false
               },
@@ -131,125 +131,125 @@ const reactQuestions = {
 
 const HTMLQuestions = {
   'Q1':{
-    statement: 'a',
+    statement: 'Which of the following is used to create Web Pages ?',
     options: {
       'P1':{
-        answer: 'e',
-        isCorrect: true,
+        answer: 'C++',
+        isCorrect: false,
         isSelected: false
       },
       'P2':{
-        answer: 'b',
+        answer: 'Java',
         isCorrect: false,
         isSelected: false
       },
       'P3':{
-        answer: 'c',
-        isCorrect: false,
+        answer: 'HTML',
+        isCorrect: true,
         isSelected: false
       },
       'P4':{
-        answer: 'd',
+        answer: 'JVM',
         isCorrect: false,
         isSelected: false
       },
     }
   },
   'Q2':{
-      statement: 'c',
+      statement: 'HTML is a set of markup _________.',
       options: {
         'P1':{
-          answer: 'e',
+          answer: 'Tags',
           isCorrect: true,
           isSelected: false
         },
         'P2':{
-          answer: 'b',
+          answer: 'Sets',
           isCorrect: false,
           isSelected: false
         },
         'P3':{
-          answer: 'c',
+          answer: 'Attributes',
           isCorrect: false,
           isSelected: false
         },
         'P4':{
-          answer: 'd',
+          answer: 'None of the above',
           isCorrect: false,
           isSelected: false
         },
       }
     },
     'Q3':{
-        statement: 'b',
+        statement: 'HTML tags are used to describe document _______.',
         options: {
           'P1':{
-            answer: 'e',
-            isCorrect: true,
-            isSelected: false
-          },
-          'P2':{
-            answer: 'b',
+            answer: 'Definition',
             isCorrect: false,
             isSelected: false
           },
+          'P2':{
+            answer: 'Content',
+            isCorrect: true,
+            isSelected: false
+          },
           'P3':{
-            answer: 'c',
+            answer: 'Language',
             isCorrect: false,
             isSelected: false
           },
           'P4':{
-            answer: 'd',
+            answer: 'Model',
             isCorrect: false,
             isSelected: false
           },
         }
       },
       'Q4':{
-          statement: 'a',
+          statement: 'HTML program is saved using ______ extension.',
           options: {
             'P1':{
-              answer: 'e',
-              isCorrect: true,
-              isSelected: false
-            },
-            'P2':{
-              answer: 'b',
+              answer: '.htmn',
               isCorrect: false,
               isSelected: false
             },
+            'P2':{
+              answer: '.html',
+              isCorrect: true,
+              isSelected: false
+            },
             'P3':{
-              answer: 'c',
+              answer: '.htnl',
               isCorrect: false,
               isSelected: false
             },
             'P4':{
-              answer: 'd',
+              answer: '.htnl',
               isCorrect: false,
               isSelected: false
             },
           }
         },
         'Q5':{
-            statement: 'e',
+            statement: 'HTML program can be read and rendered by _______.',
             options: {
               'P1':{
-                answer: 'e',
+                answer: 'Compiler',
                 isCorrect: true,
                 isSelected: false
               },
               'P2':{
-                answer: 'b',
+                answer: 'Server',
                 isCorrect: false,
                 isSelected: false
               },
               'P3':{
-                answer: 'c',
+                answer: 'Web Browser',
                 isCorrect: false,
                 isSelected: false
               },
               'P4':{
-                answer: 'd',
+                answer: 'Interpreter',
                 isCorrect: false,
                 isSelected: false
               },
@@ -259,14 +259,16 @@ const HTMLQuestions = {
 
 const reactTest = {
     title: 'React',
-    description: 'This is a react test',
+    description: 'React.js is a coding language that allows front-end developers to build complex user interfaces and components for dynamic and engaging web applications.',
+    imagePath: '/static/images/react.png',
     questions: reactQuestions,
-    isEvaluated: true
+    isEvaluated: false
 }
   
   const HTMLTest =  {
     title: 'HTML',
     description: 'This is a HTML test',
+    imagePath: '/static/images/html.png',
     questions: HTMLQuestions,
     isEvaluated: false
 }
